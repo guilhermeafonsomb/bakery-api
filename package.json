@@ -3,14 +3,19 @@
    "version": "0.0.1",
    "description": "Desafio Finder Up",
    "devDependencies": {
-      "ts-node": "3.3.0",
+      "@types/express": "^4.17.13",
       "@types/node": "^8.0.29",
+      "nodemon": "^2.0.13",
+      "ts-node": "3.3.0",
       "typescript": "3.3.3333"
    },
    "dependencies": {
-      "typeorm": "0.2.37",
+      "cors": "^2.8.5",
+      "express": "^4.17.1",
+      "morgan": "^1.10.0",
+      "pg": "^8.4.0",
       "reflect-metadata": "^0.1.10",
-      "pg": "^8.4.0"
+      "typeorm": "0.2.37"
    },
    "scripts": {
       "typeorm": "ts-node ./node_modules/typeorm/cli",
