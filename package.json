@@ -13,6 +13,7 @@
       "pg": "^8.4.0"
    },
    "scripts": {
+      "typeorm": "ts-node ./node_modules/typeorm/cli",
       "start": "ts-node src/index.ts"
    }
 }
