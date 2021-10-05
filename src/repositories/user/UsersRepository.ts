@@ -8,7 +8,6 @@ interface IUsersRepository {
     
 }
 
-
 interface ICreateUserDTO {
     name: string;
     position: string;
