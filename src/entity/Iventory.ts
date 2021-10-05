@@ -1,24 +1,31 @@
+import { v4 as uuid } from 'uuid';
 import {Entity, PrimaryGeneratedColumn, Column, OneToMany, CreateDateColumn} from "typeorm";
 
 import { Product } from "./Product";
 import { User } from "./User";
 
-@Entity()
+@Entity('iventories')
 export class Iventory {
 
-    @PrimaryGeneratedColumn()
-    id: number;
+    @PrimaryGeneratedColumn('uuid')
+    id: string;
 
     @OneToMany(() => Product, () => Iventory)
-    product: Product[];
+    products: Product[];
 
     @OneToMany(() => User, () => Iventory)
-    user: User[];
+    users: User[];
 
     @Column()
     quantity: number;
 
     @CreateDateColumn()
     createdDate: Date;
+
+    constructor() {
+        if(!this.id) {
+            this.id = uuid();
+        }
+    }
 
 }

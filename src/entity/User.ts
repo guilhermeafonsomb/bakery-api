@@ -1,11 +1,12 @@
+import { v4 as uuid } from 'uuid';
 import {Entity, PrimaryGeneratedColumn, Column, ManyToOne} from "typeorm";
 import { Iventory } from "./Iventory";
 
-@Entity()
+@Entity('users')
 export class User {
 
-    @PrimaryGeneratedColumn()
-    id: number;
+    @PrimaryGeneratedColumn('uuid')
+    id: string;
 
     @Column()
     name: string;
@@ -13,6 +14,14 @@ export class User {
     @Column()
     position: string;
 
-    @ManyToOne(() => User, () => Iventory)
+    @ManyToOne(() => Iventory, () => User, {
+        eager: true
+    })
     iventory: Iventory;
+
+    constructor() {
+        if(!this.id) {
+            this.id = uuid();
+        }
+    }
 }
