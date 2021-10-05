@@ -1,5 +1,5 @@
 import {Entity, PrimaryGeneratedColumn, Column, ManyToOne} from "typeorm";
-import { Storage } from "./Storage";
+import { Iventory } from "./Iventory";
 
 @Entity()
 export class Product {
@@ -10,8 +10,8 @@ export class Product {
     @Column()
     name: string;
 
-    @ManyToOne(() => Product, () => Storage)
-    storage: Storage;
+    @ManyToOne(() => Product, () => Iventory)
+    iventory: Iventory;
 
    
 }
