@@ -14,7 +14,8 @@
       "morgan": "^1.10.0",
       "pg": "^8.4.0",
       "reflect-metadata": "^0.1.10",
-      "typeorm": "0.2.37"
+      "typeorm": "0.2.37",
+      "uuid": "^8.3.2"
    },
    "scripts": {
       "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts",
