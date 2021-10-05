@@ -1,6 +1,6 @@
 import { inject, injectable } from "tsyringe";
 
-import { IProductsRepository } from "../../repositories/product/ProductsRepository";
+import { ICreateProductsDTO, IProductsRepository } from "../../repositories/product/ProductsRepository";
 
 @injectable()
     class CreateProductsService {
@@ -8,14 +8,14 @@ import { IProductsRepository } from "../../repositories/product/ProductsReposito
             @inject("ProductsRepository")
             private productRepository: IProductsRepository) {};
 
-        async execute(name: string): Promise<void> {
+        async execute({ name, quantity = 0 }: ICreateProductsDTO): Promise<void> {
            const productAlreadyExist = await this.productRepository.findByName(name);
 
             if(productAlreadyExist) {
-                throw new Error (`Product ${name} already exist.`)
+                throw new Error (`Product ${name} already exist.`)  // TO DO realizar o uptade de quantidade
             };
 
-            await this.productRepository.create(name);
+            await this.productRepository.create({ name, quantity });
         };
     };
 

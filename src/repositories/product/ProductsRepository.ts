@@ -2,8 +2,12 @@ import { getRepository, Repository } from "typeorm";
 
 import { Product } from "../../entity/Product";
 
+interface ICreateProductsDTO {
+    name: string;
+    quantity: number;    
+}
 interface IProductsRepository {
-    create(name: string): Promise<void>;
+    create({ name, quantity }: ICreateProductsDTO): Promise<void>;
     findByName(name: string): Promise<Product>;
     
 }
@@ -15,8 +19,11 @@ class ProductsRepository implements IProductsRepository {
         this.repository = getRepository(Product);
     }
 
-    async create(name: string) {
-        const product = this.repository.create({ name });
+    async create({ name, quantity }: ICreateProductsDTO) {
+        const product = this.repository.create({ 
+            name, 
+            quantity
+        });
 
         await this.repository.save(product);
     }
@@ -28,4 +35,4 @@ class ProductsRepository implements IProductsRepository {
     }
 };
 
-export { ProductsRepository, IProductsRepository };
+export { ProductsRepository, IProductsRepository, ICreateProductsDTO };

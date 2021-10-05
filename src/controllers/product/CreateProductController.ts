@@ -6,11 +6,11 @@ import { CreateProductsService } from "../../services/product/CreateProductsServ
 class CreateProductController {
     
     async handle(req: Request, res: Response): Promise<Response> {
-        const { name } = req.body;
+        const { name, quantity } = req.body;
         const createProductsService = container.resolve(CreateProductsService);
 
 
-        await createProductsService.execute(name);
+        await createProductsService.execute({ name, quantity });
 
         return res.status(201).send();
     }
