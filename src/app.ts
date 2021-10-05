@@ -1,9 +1,8 @@
 import * as express from 'express';
-import * as bodyParser from 'body-parser';
 import * as cors from 'cors';
 import * as logger from 'morgan';
 
-import { conectServerToDB } from './config/db';
+import { conectServerToDB } from './database';
 
 /*
 * Cria a aplicação 
@@ -18,7 +17,7 @@ app.use(cors());
 /*
  * Permite receber e enviar JSON 
 */
-app.use(bodyParser.json());
+app.use(express.json());
 
 /*
  * Configura os logs 
