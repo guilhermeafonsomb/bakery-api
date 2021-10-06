@@ -10,12 +10,12 @@ class WriteOffRawMaterialsController {
         const writeOffRawMaterialsService = container.resolve(WriteOffRawMaterialsService);
         const rawMaterial = await writeOffRawMaterialsService.execute({id, user, quantity});
 
-        const ObjectResponse = {
+        const objectResponse = {
             quantity: rawMaterial.quantity,
             user: rawMaterial.user.name,
         }
 
-        return res.status(200).json(ObjectResponse);
+        return res.status(200).json(objectResponse);
     }
 };
 

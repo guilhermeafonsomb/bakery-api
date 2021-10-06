@@ -10,7 +10,13 @@ class GetRawMaterialsController {
         const getRawMaterialsService = container.resolve(GetRawMaterialsService);
         const rawMaterial = await getRawMaterialsService.execute(name as string);
 
-        return res.status(200).json(rawMaterial);
+        const mapResponse = rawMaterial.map(element => ({
+            name: element.name,
+            quantity: element.quantity,
+            user: element.user.name
+        }));
+
+        return res.status(200).json(mapResponse);
     }
 };
 
