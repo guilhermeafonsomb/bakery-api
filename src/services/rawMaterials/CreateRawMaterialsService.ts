@@ -1,5 +1,6 @@
 import { container, inject, injectable } from "tsyringe";
 import { RawMaterials } from "../../entity/RawMaterials";
+import { AppError } from "../../errors/AppError";
 import { IRawMaterialsRepository } from "../../repositories/rawMaterials/RawMaterialsRepository";
 
 import { IUsersRepository } from "../../repositories/user/UsersRepository";
@@ -26,11 +27,11 @@ class CreateRawMaterialsService {
         const addRawMaterialsQuanityService = container.resolve(AddRawMaterialsQuanityService);
 
         if (!userAlreadyExist) {
-            throw new Error(`Is necessary a user to insert new raw materials. PLEASE CREATE`);
+            throw new AppError(`Is necessary a user to insert new raw materials. PLEASE CREATE`, 401);
         };
 
         if (userAlreadyExist.position !== "STOCKIST") {
-            throw new Error(`Must be a stockist to insert new raw materials.`);
+            throw new AppError(`Must be a stockist to insert new raw materials.`, 401);
         };
 
         if (rawMaterialAlreadyExist) {

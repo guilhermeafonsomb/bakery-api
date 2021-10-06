@@ -1,13 +1,14 @@
 import * as express from 'express';
 import * as cors from 'cors';
 import * as logger from 'morgan';
-
+import 'express-async-errors';
 import './database';
 import './containers';
 import { router } from './routes';
+import { AppError } from './errors/AppError';
 
 /*
-* Cria a aplicação 
+ * Cria a aplicação 
 */
 export const app = express();
 
@@ -32,5 +33,21 @@ app.use(router);
 app.use(logger('dev'));
 
 /*
- * Conecta no DataBase 
+ * MiddleWare para tratativas de erros
 */
+app.use((err: Error, 
+    req: express.Request, 
+    res: express.Response, 
+    next: express.NextFunction) => {
+        if(err instanceof AppError) {
+            return res.status(err.statusCode).json({
+                message: err.message
+            });
+        };
+
+        return res.status(500).json({
+            status: 'error',
+            message: `Internal server error - ${err.message}`
+        })
+    }
+);
