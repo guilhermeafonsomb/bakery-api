@@ -8,7 +8,7 @@ interface IRequest {
 }
 
 @injectable()
-class AddRawMaterialsQuanityService {
+class IncrementRawMaterialsQuanityService {
     constructor(
         @inject("RawMaterialsRepository")
         private rawMaterialsRepository: IRawMaterialsRepository
@@ -23,4 +23,4 @@ class AddRawMaterialsQuanityService {
     };
 };
 
-export { AddRawMaterialsQuanityService };
+export { IncrementRawMaterialsQuanityService };
