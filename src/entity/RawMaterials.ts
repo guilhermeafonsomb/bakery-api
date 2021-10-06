@@ -18,6 +18,7 @@ export class RawMaterials {
     })
     user: User;
 
+    @Column()
     quantity: number;
 
     @CreateDateColumn()
