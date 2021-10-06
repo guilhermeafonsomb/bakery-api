@@ -5,8 +5,9 @@ import { User } from "../../entity/User";
 
 interface ICreateRawMaterialsDTO {
     user: User;
-    name: string;
+    name?: string;
     quantity: number;
+    id?: string;
 }
 
 interface IUpdateRawMaterial {
@@ -15,6 +16,7 @@ interface IUpdateRawMaterial {
 
 interface IRawMaterialsRepository {
     findByName( name: string): Promise<RawMaterials>;    
+    findById(id: string): Promise<RawMaterials>;    
     update({ rawMaterial }: IUpdateRawMaterial): Promise<RawMaterials>;    
     create( { user, name, quantity } : ICreateRawMaterialsDTO): Promise<RawMaterials>;    
     listByName(name: string): Promise<RawMaterials[]>;    
@@ -28,6 +30,12 @@ class RawMaterialsRepository implements IRawMaterialsRepository {
 
     async findByName(name: string) {
         const rawMaterial = await this.repository.findOne({name: name});
+
+        return rawMaterial;
+    };
+
+    async findById(id: string) {
+        const rawMaterial = await this.repository.findOne({id: id});
 
         return rawMaterial;
     };
