@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { productsRoutes } from "./products.routes";
+import { rawMaterialsRoutes } from "./rawMaterials.routes";
 import { usersRoutes } from "./users.routes";
 
 const router = Router();
 router.use('/users', usersRoutes);
-router.use('/products', productsRoutes);
+router.use('/rawMaterials', rawMaterialsRoutes);
 
 export { router };

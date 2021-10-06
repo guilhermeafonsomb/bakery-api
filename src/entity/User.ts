@@ -1,6 +1,6 @@
 import { v4 as uuid } from 'uuid';
-import {Entity, PrimaryGeneratedColumn, Column, ManyToOne} from "typeorm";
-import { Iventory } from "./Iventory";
+import {Entity, PrimaryGeneratedColumn, Column, OneToMany, JoinColumn, OneToOne} from "typeorm";
+import { RawMaterials } from "./RawMaterials";
 
 @Entity('users')
 export class User {
@@ -14,10 +14,8 @@ export class User {
     @Column()
     position: string;
 
-    @ManyToOne(() => Iventory, () => User, {
-        eager: true
-    })
-    iventory: Iventory;
+    @OneToMany(() => RawMaterials, (rawMaterials) => rawMaterials.user)
+    rawMaterials: RawMaterials[];
 
     constructor() {
         if(!this.id) {
