@@ -10,7 +10,7 @@ class GetRawMaterialsController {
         const getRawMaterialsService = container.resolve(GetRawMaterialsService);
         const rawMaterial = await getRawMaterialsService.execute(name as string);
 
-        return res.status(201).json(rawMaterial);
+        return res.status(200).json(rawMaterial);
     }
 };
 
