@@ -11,9 +11,8 @@ class CreateRawMaterialsController {
         const createRawMaterialsService = container.resolve(CreateRawMaterialsService);
 
 
-        await createRawMaterialsService.execute({ name, quantity, user });
-
-        return res.status(201).send();
+        const rawMaterial = await createRawMaterialsService.execute({ name, quantity, user });
+        return res.status(201).json(rawMaterial);
     }
 };
 
