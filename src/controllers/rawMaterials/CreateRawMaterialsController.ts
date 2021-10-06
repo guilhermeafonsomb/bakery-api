@@ -3,7 +3,6 @@ import { container } from "tsyringe";
 
 import { CreateRawMaterialsService } from "../../services/rawMaterials/CreateRawMaterialsService";
 
-
 class CreateRawMaterialsController {
     
     async handle(req: Request, res: Response): Promise<Response> {
