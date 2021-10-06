@@ -17,6 +17,7 @@ interface IRawMaterialsRepository {
     findByName( name: string): Promise<RawMaterials>;    
     update({ rawMaterial }: IUpdateRawMaterial): Promise<RawMaterials>;    
     create( { user, name, quantity } : ICreateRawMaterialsDTO): Promise<RawMaterials>;    
+    listByName(name: string): Promise<RawMaterials[]>;    
 }
 class RawMaterialsRepository implements IRawMaterialsRepository {
     private repository: Repository<RawMaterials>;
@@ -42,6 +43,12 @@ class RawMaterialsRepository implements IRawMaterialsRepository {
         const rawMaterial = this.repository.create( { user, name, quantity });
 
         await this.repository.save(rawMaterial);
+
+        return rawMaterial;
+    };
+
+    async listByName(name: string) {
+        const rawMaterial = await this.repository.find({name: name});
 
         return rawMaterial;
     };

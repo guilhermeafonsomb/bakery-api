@@ -1,5 +1,5 @@
 import { v4 as uuid } from 'uuid';
-import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, OneToOne, JoinColumn, ManyToOne} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, ManyToOne} from "typeorm";
 
 import { User } from "./User";
 
