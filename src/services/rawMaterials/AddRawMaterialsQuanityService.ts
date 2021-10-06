@@ -1,4 +1,4 @@
-import { container, inject, injectable } from "tsyringe";
+import { inject, injectable } from "tsyringe";
 import { RawMaterials } from "../../entity/RawMaterials";
 import { IRawMaterialsRepository } from "../../repositories/rawMaterials/RawMaterialsRepository";
 
