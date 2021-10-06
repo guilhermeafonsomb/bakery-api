@@ -1,4 +1,5 @@
 import { inject, injectable } from "tsyringe";
+import { AppError } from "../../errors/AppError";
 import { ICreateUserDTO, IUsersRepository } from "../../repositories/user/UsersRepository";
 
 @injectable()
@@ -11,7 +12,7 @@ import { ICreateUserDTO, IUsersRepository } from "../../repositories/user/UsersR
            const userAlreadyExist = await this.userRepository.findByName(name);
 
             if(userAlreadyExist) {
-                throw new Error (`User ${name} already exist.`)
+                throw new AppError(`User ${name} already exist.`)
             };
 
             await this.userRepository.create({
