@@ -37,7 +37,8 @@ I made this API to manage a bakery. With inputs of raw materials and quantities.
 2. The server is open in ``` PORT 3000 ```;
 3. The hedears must be ``` Content-Type ``` and ``` application/json ```;
 4. You need create a user to insert informations;
-5. The tour to create a user is ``` /users ```, is a method a POST in json format;
+5. Don't forget, only "BAKER" users can make outputs and only "STOCKIST" can make inputs;
+6. The tour to create a user is ``` /users ```, is a method a POST in json format;
 ```json
 {
 	"name": "Lau",
