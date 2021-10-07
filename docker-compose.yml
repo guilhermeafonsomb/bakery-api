@@ -9,13 +9,11 @@ services:
         POSTGRES_DB: desafio-finderup-db
       volumes:
         - ./pgdata:/var/lib/postgresql/data
-      ports:
-        - "5432:5432"
+      network_mode: host
   app:
       container_name: desafio-finderup-api
       restart: always
       build: .
-      ports:
-        - "3000:3000"
+      network_mode: host
       depends_on:
         - db
