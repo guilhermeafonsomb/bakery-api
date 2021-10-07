@@ -68,7 +68,6 @@ I made this API to manage a bakery. With inputs of raw materials and quantities.
 ```
 8. Finally create a GET method and put the name of your user after "=" into route ``` /rawMaterials?user=Lau ```, to get all the things this user do in this application. Something like this;
 ```json
-{
 [
   {
     "id": "f05ff524-0183-4a60-9624-b06d73c36cfb",
@@ -85,5 +84,4 @@ I made this API to manage a bakery. With inputs of raw materials and quantities.
     "createdDate": "2021-10-07T15:02:55.133Z"
   }
 ]
-}
 ```
