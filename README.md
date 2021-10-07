@@ -43,7 +43,6 @@ I made this API to manage a bakery. With inputs of raw materials and quantities.
 4. Create a other method a POST in format json into rout ``` /rawMaterials ```;
 ```json
 {
-	{
 	"name": "PC",
 	"quantity": 1,
 	"user": "Lau"
