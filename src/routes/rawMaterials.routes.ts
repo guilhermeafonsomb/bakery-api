@@ -2,7 +2,7 @@ import { Router } from "express";
 
 import { CreateRawMaterialsController } from "../controllers/rawMaterials/CreateRawMaterialsController";
 import { GetRawMaterialsController } from "../controllers/rawMaterials/GetRawMaterialsController";
-import { WriteOffRawMaterialsController } from "../controllers/rawMaterials/writeOffRawMaterialsController";
+import { WriteOffRawMaterialsController } from "../controllers/rawMaterials/WriteOffRawMaterialsController";
 
 const rawMaterialsRoutes = Router();
 
