@@ -4,6 +4,7 @@ import { AppError } from "../../errors/AppError";
 import { IRawMaterialsRepository } from "../../repositories/rawMaterials/RawMaterialsRepository";
 
 import { IUsersRepository } from "../../repositories/user/UsersRepository";
+import { CreateInventoryService } from "../inventory/CreateInventoryService";
 import { IncrementRawMaterialsQuanityService } from "./IncrementRawMaterialsQuanityService";
 
 interface IRequest {
@@ -25,6 +26,7 @@ class CreateRawMaterialsService {
         const userAlreadyExist = await this.usersRepository.findByName(user);
         const rawMaterialAlreadyExist = await this.rawMaterialsRepository.findByName(name);
         const incrementRawMaterialsQuanityService = container.resolve(IncrementRawMaterialsQuanityService);
+        const createInventoryService = container.resolve(CreateInventoryService);
 
         if (!userAlreadyExist) {
             throw new AppError(`Is necessary a user to insert new raw materials. PLEASE CREATE`, 401);
@@ -37,12 +39,26 @@ class CreateRawMaterialsService {
 
         if (rawMaterialAlreadyExist) {
             const updatedResponse = await incrementRawMaterialsQuanityService.execute({name, quantity});
+            
+            await createInventoryService.execute({
+                productName: name,
+                quantity,
+                userName: userAlreadyExist.name,
+                status: 'input'
+            })
 
             return updatedResponse;
         };
         
 
          const createdResponseRawMaterial = await this.rawMaterialsRepository.create({ name, quantity, user: userAlreadyExist});
+
+         await createInventoryService.execute({
+             productName: name,
+             quantity,
+             userName: userAlreadyExist.name,
+             status: 'input'
+         })
 
          return createdResponseRawMaterial;
 
