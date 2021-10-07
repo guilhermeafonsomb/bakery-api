@@ -37,6 +37,10 @@ class CreateRawMaterialsService {
             throw new AppError(`Is necessary a user to insert new raw materials. PLEASE CREATE`, 401);
         };
 
+        if (userAlreadyExist.position !== "STOCKIST") {
+            throw new AppError(`Need be a "stockist" to insert raw material`, 401);
+        };
+
         if (rawMaterialAlreadyExist) {
             const updatedResponse = await incrementRawMaterialsQuanityService.execute({name, quantity});
             
