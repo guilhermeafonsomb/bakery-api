@@ -10,6 +10,8 @@ services:
       volumes:
         - ./pgdata:/var/lib/postgresql/data
       network_mode: host
+      ports:
+        - "5432:5432"
   app:
       container_name: desafio-finderup-api
       restart: always
