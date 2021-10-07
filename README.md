@@ -42,6 +42,7 @@ I made this API to manage a bakery. With inputs of raw materials and quantities.
 	"position": "Estoquista"
 }
 ```
+
 4. Create a other method a POST in format json into rout ``` /rawMaterials ```;
 ```json
 {
@@ -50,6 +51,7 @@ I made this API to manage a bakery. With inputs of raw materials and quantities.
 	"user": "Lau"
 }
 ```
+
 5. Create a method a GET into route, and after "=" put the name of your product ``` /rawMaterials?name=PC ```. The return of the console must have a id, copy this id before you pass to the next step;
 ```json
 [
@@ -61,6 +63,7 @@ I made this API to manage a bakery. With inputs of raw materials and quantities.
   }
 ]
 ```
+
 7. Create a method a PUT into route ``` /rawMaterials/e6cdd21a-f64c-420a-b508-66169c08fa16/request ```, don't forget to paste id into the route, after ```/rawMaterials/```. The PUT is a json format too and should look like this. Don't forget to put the quantity you want to decrement;
 ```json
 {
@@ -68,6 +71,7 @@ I made this API to manage a bakery. With inputs of raw materials and quantities.
 	"user": "Lau"
 }
 ```
+
 8. Finally create a GET method and put the name of your user after "=" into route ``` /rawMaterials?user=Lau ```, to get all the things this user do in this application. Something like this;
 ```json
 [
