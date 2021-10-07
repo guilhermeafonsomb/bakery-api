@@ -34,7 +34,7 @@ class WriteOffRawMaterialsService {
             throw new AppError(`Is necessary a existing raw material to write off . PLEASE CREATE`, 401);
         };
         
-        if (rawMaterialAlreadyExist && userAlreadyExist.position === "BAKER") {
+        if (rawMaterialAlreadyExist) {
             const updatedResponse = await decrementRawMaterialsQuanityService.execute({id, quantity});
 
             return updatedResponse;
