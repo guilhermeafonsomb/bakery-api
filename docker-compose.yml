@@ -1,13 +1,21 @@
 version: "3.7"
 services:
   db:
-    image: "postgres:latest"
-    environment:
-      PGDATA: /tmp
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_USER: postgres
-      POSTGRES_DB: desafio-finderup
-    volumes:
-      - ./pgdata:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
+      image: "postgres:latest"
+      environment:
+        PGDATA: /tmp
+        POSTGRES_PASSWORD: postgres
+        POSTGRES_USER: postgres
+        POSTGRES_DB: desafio-finderup-db
+      volumes:
+        - ./pgdata:/var/lib/postgresql/data
+      ports:
+        - "5432:5432"
+  app:
+      container_name: desafio-finderup-api
+      restart: always
+      build: .
+      ports:
+        - "3000:3000"
+      depends_on:
+        - db
