@@ -8,6 +8,11 @@ interface ICreateInventoryDTO {
     status: 'input' | 'output';
 };
 
+/*
+ * Inventory foi criado para conseguir rastrear o que foi input e output 
+    para conseguir realizar o GET do gerente;
+*/
+
 interface IInventoryRepository {
     create({ productName, userName, quantity, status }: ICreateInventoryDTO): Promise<Inventory>;
     listByName(productName: string): Promise<Inventory[]>;

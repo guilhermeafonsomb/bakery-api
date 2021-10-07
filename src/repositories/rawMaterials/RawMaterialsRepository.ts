@@ -21,6 +21,11 @@ interface IRawMaterialsRepository {
     create( { user, name, quantity } : ICreateRawMaterialsDTO): Promise<RawMaterials>;    
     listByName(name: string): Promise<RawMaterials[]>;    
 }
+
+/* 
+ * Criando repositório de raw materials;
+ * Contem alguns metodos que foram utilizados pela aplicação;
+*/
 class RawMaterialsRepository implements IRawMaterialsRepository {
     private repository: Repository<RawMaterials>;
 
