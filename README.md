@@ -16,12 +16,14 @@ I made this API to manage a bakery. With inputs of raw materials and quantities.
 
 1. Clone this repo;
 2. Install ``` yarn ``` in your PC;
-3. Install ``` docker tollbox ``` and ``` docker-compose ```, it's important if you are in windows, you need install docker tollbox to run this API;
+3. Install ``` docker-compose ```, it's important if you are in windows and using docker toll box, you need change the localhost to IP docker tollbox on ormconfig.json file;
+4. If  
 
 ## Develoment setup inside docker container
 
 1. To install all dev dependencies, run ``` yarn ``` in package.json directory;
 2. In your terminal on project directory, run ``` docker-compose up -d ``` ;
+3. In your terminal on project directory, run ``` yarn typeorm migratio:run ``` ;
 
 ## Develoment setup localhost
 
@@ -35,7 +37,8 @@ I made this API to manage a bakery. With inputs of raw materials and quantities.
 2. The server is open in ``` PORT 3000 ```;
 3. The hedears must be ``` Content-Type ``` and ``` application/json ```;
 4. You need create a user to insert informations;
-5. The tour to create a user is ``` /users ```, is a method a POST in json format;
+5. Don't forget, only "BAKER" users can make outputs and only "STOCKIST" can make inputs;
+6. The tour to create a user is ``` /users ```, is a method a POST in json format;
 ```json
 {
 	"name": "Lau",
