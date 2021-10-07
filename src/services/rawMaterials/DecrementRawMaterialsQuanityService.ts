@@ -21,6 +21,7 @@ class DecrementRawMaterialsQuanityService {
         rawMaterial.quantity -= quantity;
         const response = await this.rawMaterialsRepository.update({ rawMaterial });
 
+        // inventario responsavel por marcar como output;
         await createInventoryService.execute({
             productName: rawMaterial.name,
             quantity,

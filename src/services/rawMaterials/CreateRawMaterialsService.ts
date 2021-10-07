@@ -11,7 +11,12 @@ interface IRequest {
     name: string;
     quantity: number;
     user: string;
-}
+};
+
+/*
+ * Serviço criado para raw material;
+ * Realizando algumas validações caso o raw material já existir;
+*/
 
 @injectable()
 class CreateRawMaterialsService {
@@ -31,11 +36,6 @@ class CreateRawMaterialsService {
         if (!userAlreadyExist) {
             throw new AppError(`Is necessary a user to insert new raw materials. PLEASE CREATE`, 401);
         };
-        
-        if (userAlreadyExist.position !== "STOCKIST") {
-            throw new AppError(`Must be a stockist to insert new raw materials.`, 401);
-        };
-
 
         if (rawMaterialAlreadyExist) {
             const updatedResponse = await incrementRawMaterialsQuanityService.execute({name, quantity});
@@ -45,7 +45,7 @@ class CreateRawMaterialsService {
                 quantity,
                 userName: userAlreadyExist.name,
                 status: 'input'
-            })
+            });
 
             return updatedResponse;
         };
@@ -58,7 +58,7 @@ class CreateRawMaterialsService {
              quantity,
              userName: userAlreadyExist.name,
              status: 'input'
-         })
+         });
 
          return createdResponseRawMaterial;
 

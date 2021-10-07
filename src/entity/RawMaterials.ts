@@ -3,6 +3,10 @@ import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, ManyToOne} fro
 
 import { User } from "./User";
 
+
+/*
+    * Criando enditade para usar no banco de dados;
+*/
 @Entity('rawMaterials')
 export class RawMaterials {
 
