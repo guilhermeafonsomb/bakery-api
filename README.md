@@ -31,9 +31,11 @@ I made this API to manage a bakery. With inputs of raw materials and quantities.
 
 ## How to use
 
-1. You need a API platform app, like insomnia or pstman;
-2. You need create a user to insert informations;
-3. The tour to create a user is ``` /users ```, is a method a POST in json format;
+1. You need a API platform app, like insomnia or postman;
+2. The server is open in ``` PORT 3000 ```;
+3. The hedears must be ``` Content-Type ``` and ``` application/json ```;
+4. You need create a user to insert informations;
+5. The tour to create a user is ``` /users ```, is a method a POST in json format;
 ```json
 {
 	"name": "Lau",
