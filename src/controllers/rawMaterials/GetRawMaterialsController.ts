@@ -1,22 +1,43 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
+import { GetOutputInventoryService } from "../../services/inventory/GetOutputInventoryService";
 
 import { GetRawMaterialsService } from "../../services/rawMaterials/GetRawMaterialsService";
-
 class GetRawMaterialsController {
-    
+
     async handle(req: Request, res: Response): Promise<Response> {
-        const { name } = req.query;
-        const getRawMaterialsService = container.resolve(GetRawMaterialsService);
-        const rawMaterial = await getRawMaterialsService.execute(name as string);
+        const { name, user } = req.query;
 
-        const mapResponse = rawMaterial.map(element => ({
-            name: element.name,
-            quantity: element.quantity,
-            user: element.user.name
-        }));
+        if (user) {
+            const getOutputInventoryService = container.resolve(GetOutputInventoryService);
+            const inventories = await getOutputInventoryService.execute(user as string);
 
-        return res.status(200).json(mapResponse);
+            const mapResponse = inventories.map(element => ({
+                id: element.id,
+                name: element.productName,
+                quantity: element.quantity,
+                user: element.userName,
+                createdDate: element.createdDate
+
+            }))
+
+            return res.status(200).json(mapResponse);
+        };
+
+        if (name) {
+            const getRawMaterialsService = container.resolve(GetRawMaterialsService);
+            const rawMaterial = await getRawMaterialsService.execute(name as string);
+
+            const mapResponse = rawMaterial.map(element => ({
+                id: element.id,
+                name: element.name,
+                quantity: element.quantity,
+                user: element.user.name
+            }));
+
+            return res.status(200).json(mapResponse);
+        };
+
     }
 };
 
