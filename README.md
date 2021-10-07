@@ -1,4 +1,6 @@
-# Awesome Project Build with TypeORM
+# FinderUp-api-bakery
+
+> this
 
 Steps to run this project:
 
