@@ -23,7 +23,7 @@ export class Inventory {
     createdDate: Date;
 
     constructor() {
-        if(!this.id) {
+        if(!this.i) {
             this.id = uuid();
         }
     }
