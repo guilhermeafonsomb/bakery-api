@@ -1,4 +1,4 @@
-# FinderUp-api-bakery
+# bakery-api
 
 > This is a simple api to a technical challenge
 
