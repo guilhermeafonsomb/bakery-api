@@ -1,6 +1,5 @@
 # bakery-api
 
-> This is a simple api to a technical challenge
 
 I made this API to manage a bakery. With inputs of raw materials and quantities. Outputs of these raw material and a manager repor with each outputs and the responsible of these outputs.
 
