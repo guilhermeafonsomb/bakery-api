@@ -18,13 +18,13 @@ I made this API to manage a bakery. With inputs of raw materials and quantities.
 3. Install ``` docker-compose ```, it's important if you are in windows and using docker toll box, you need change the localhost to IP docker tollbox on ormconfig.json file;
 4. If  
 
-## Develoment setup inside docker container
+## Development setup inside docker container
 
 1. To install all dev dependencies, run ``` yarn ``` in package.json directory;
 2. In your terminal on project directory, run ``` docker-compose up -d ``` ;
 3. In your terminal on project directory, run ``` yarn typeorm migration:run ``` ;
 
-## Develoment setup localhost
+## Development setup localhost
 
 1. To install all dev dependencies, run ``` yarn ``` in package.json directory;
 2. In your terminal on project directory, run ``` yarn typeorm migration:run ``` ;
