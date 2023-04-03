@@ -29,4 +29,3 @@ I made this API to manage a bakery. With inputs of raw materials and quantities.
 1. To install all dev dependencies, run ``` yarn ``` in package.json directory;
 2. In your terminal on project directory, run ``` yarn typeorm migration:run ``` ;
 4. To start this project run your terminal ``` yarn dev ```;
-```
