@@ -16,7 +16,6 @@ I made this API to manage a bakery. With inputs of raw materials and quantities.
 1. Clone this repo;
 2. Install ``` yarn ``` in your PC;
 3. Install ``` docker-compose ```, it's important if you are in windows and using docker toll box, you need change the localhost to IP docker tollbox on ormconfig.json file;
-4. If  
 
 ## Development setup inside docker container
 
